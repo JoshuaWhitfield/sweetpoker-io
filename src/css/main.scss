@@ -1,0 +1,387 @@
+$background: rgb(17, 0, 36);
+$background2: rgba(255, 255, 255, 0.05);
+$primary-elem: rgba(97, 14, 205, 0.885);
+$primary-text: rgb(158, 94, 241);
+$secondary-text: rgb(255, 255, 255);
+$card-outline: rgb(58, 53, 64);
+$card-outline2: rgba(255, 255, 255, 0.08);
+$primary-card: rgb(43, 39, 47);
+$secondary-card: rgb(31, 28, 33);
+$gradient: linear-gradient(90deg, rgb(158, 94, 241), rgb(88, 8, 192));
+$gradient2: linear-gradient(45deg, rgb(88, 8, 192), rgb(158, 94, 241));
+
+body {
+    background-color: $background;
+}
+
+.custom-body {
+    margin: 50px;
+}
+
+
+.custom-box {
+    position: absolute;
+    width: fit-content;
+    height: fit-content; 
+}
+
+.fit-image {
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.logo {
+    background-image: url(../app/assets/logo/logo-gradient.png);
+}
+
+.full-height {
+    height: 100%;
+}
+
+@font-face {
+    font-family: Lato;
+    src: url(../fonts/Lato-Regular.ttf);
+}
+
+.lato {
+    font-family: 'Lato', sans-serif;
+}
+
+/* buttons */
+
+.button {
+    background-image: $gradient;
+    border-radius: 50px 50px 50px 50px;
+}
+
+.button p {
+    color: $secondary-text;
+}
+
+.button:hover {
+    opacity: 0.93;
+    filter: brightness(1.2);
+}
+
+.button2 {
+    background-image: $background2;
+    border-radius: 50px 50px 50px 50px;
+}
+
+.button2 p {
+    color: $primary-text;
+}
+
+.button2:hover {
+    opacity: 0.93;
+    filter: brightness(1.2);
+}
+
+.util-button {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    backdrop-filter: blur(5px) brightness(2);
+    border: none;
+}
+
+.util-button:hover {
+    background: $gradient;
+}
+
+.util-button p {
+    color:$secondary-text
+}
+
+/* text */
+
+h2, h1, h3 {
+    font-family: 'Lato', sans-serif; 
+    color: $primary-text;
+}
+
+h2 {
+    font-size: 30px;
+}
+
+.bb {
+    font-size: 25px;
+}
+
+p {
+    font-size: 20px;
+    color: $secondary-text;
+}
+
+.light-text {
+    color: $primary-text;
+}
+
+.dark-text {
+    color: $card-outline;
+}
+
+.nav-text {
+    color: $gradient;
+}
+
+
+.error-message {
+    color: red;
+    font-size: 15px; 
+}
+
+::placeholder {
+    color: $primary-text!important;
+}
+
+.special-input {
+    background-color: black!important;
+    color: $primary-text!important;
+    border: solid 2px $primary-text;
+    border-radius: 4px;
+    height: 40px;
+}
+
+.custom-input {
+    background-color: black!important;
+    color: $primary-text!important;
+    border: solid 2px rgba(255, 255, 255, 0.05);
+    border-radius: 4px;
+    height: 40px;
+}
+
+.custom-input:focus {
+    border: solid 2px $primary-text;
+}
+
+.custom-input:-webkit-autofill {
+    background-color: black; /* Example background color */
+    color: $primary-text; /* Example text color */
+    /* Add other styles as needed */
+}
+
+/* options/selectors */
+
+*:focus {
+    outline: none;
+}
+
+select {
+    background: $background;
+    color: $primary-text;
+    border-radius: 2px;
+    border: none;
+    border: solid 2px $primary-card;
+}
+
+select:focus {
+    border: solid 2px $primary-text;
+}
+
+/* card */
+
+.basic-card {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    backdrop-filter: blur(5px) brightness(2);
+}
+
+.static-card {
+    background: $background2;
+    backdrop-filter: blur(10px) brightness(2);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    color: $primary-text;
+    font-size: 20px;
+}
+
+.styled-card {
+    background: $background2;
+    backdrop-filter: blur(10px) brightness(2);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    color: $primary-text;
+    font-size: 20px;
+}
+
+.styled-card:hover {
+    background: linear-gradient(90deg, rgb(158, 94, 241), rgb(88, 8, 192));
+    backdrop-filter: blur(10px);
+    color: $secondary-text;
+}
+
+.discreet-card {
+    color: $secondary-text;
+    font-size: 20px;
+}
+
+@media screen and (min-width: 200px) {
+    .basic-card {
+        width: 40%
+    }
+}
+
+@media screen and (min-width: 375px) {
+    .basic-card {
+        width: 60%
+    }
+}
+
+@media screen and (min-width: 476px) {
+    .basic-card {
+        width: 70%
+    }
+}
+
+@media screen and (min-width: 576px) {
+    .basic-card {
+        width: 80%
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .basic-card {
+        width: 80%
+    }
+}
+
+
+@media screen and (min-width: 992px) {
+    .basic-card {
+        width: 80%
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .basic-card {
+        width: 80%
+    }
+}
+
+@media screen and (min-width: 1400px) {
+    .basic-card {
+        width: 80%
+    }
+}
+
+/* flex-box */
+
+.center-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.flex {
+    display: flex;
+}
+
+.fdc {
+    flex-direction: column;
+}
+
+.fdr {
+    flex-direction: row;
+}
+
+.jcc {
+    justify-content: center;
+}
+
+.jcs {
+    justify-content: start;
+}
+
+.jse {
+    justify-content: end;
+}
+
+.jcfs {
+    justify-content: flex-start;
+}
+
+.jcfe {
+    justify-content: flex-end;
+}
+
+.jsc {
+    justify-self: center;
+}
+
+.aic {
+    align-items: center;
+}
+
+.ais {
+    align-items: start;
+}
+
+.aie {
+    align-items: end;
+}
+
+.asc {
+    align-self: center;
+}
+
+.indep {
+    position: absolute;
+}
+
+.dep {
+    position: relative;
+}
+
+.hfc {
+    height: fit-content;
+}
+
+.wfc {
+    width: fit-content;
+}
+
+.atc {
+    text-align: center;
+}
+
+/* links */
+
+.styled-link {
+    text-decoration: none;
+}
+
+.link-text {
+    color: $primary-text;
+}
+
+.link-text:hover {
+    text-shadow: 
+        -5px 5px 15px $primary-elem,
+        5px -5px 15px $primary-elem;
+    filter: brightness(1.2);
+}
+
+.light-link-text {
+    color: $secondary-text;
+}
+
+.light-link-text:hover {
+    text-shadow: 
+        -2px 2px 5px rgba(255, 255, 255, 0.3),
+        2px -2px 5px rgba(255, 255, 255, 0.3);
+    filter: brightness(1.2);
+}
+
+/* debugging */
+
+.debug {
+    border: solid 2px lightgreen;
+}
+
+.debug2 {
+    border: solid 2px orange;
+}
+
+.debug3 {
+    border: solid 2px lightblue;
+}
