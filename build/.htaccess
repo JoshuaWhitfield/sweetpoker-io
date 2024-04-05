@@ -1,0 +1,64 @@
+<!-- RewriteEngine On
+RewriteBase /
+RewriteRule ^index\.html$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.html [L]
+
+<Directory "/home/sweetpok/public_html/.well-known">
+    Options -Indexes
+    Deny from all
+</Directory>
+
+<Directory "/home/sweetpok/public_html/static">
+    Options -Indexes
+    Deny from all
+</Directory>
+
+<Directory "/home/sweetpok/public_html/__MACOSX">
+    Options -Indexes
+    Deny from all
+</Directory>
+
+<Directory "/home/sweetpok/public_html/sweet-poker-api">
+    Options -Indexes
+    Deny from all
+</Directory>
+
+<Directory "/home/sweetpok/public_html">
+    Options -Indexes
+    Deny from all
+</Directory>
+ -->
+
+
+RewriteEngine On
+RewriteBase /
+RewriteRule ^index\.html$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.html [L]
+
+<Directory "/home/sweetpok/public_html">
+    Options -Indexes
+    Deny from all
+</Directory>
+
+<Directory "/home/sweetpok/public_html/.well-known">
+    AllowOverride None
+    Options -Indexes
+    Deny from all
+</Directory>
+
+<DirectoryMatch "^/home/sweetpok/public_html/(static|__MACOSX|sweet-poker-api)">
+    AllowOverride None
+    Options -Indexes
+    Deny from all
+</DirectoryMatch>
+
+<Directory "/home/sweetpok/public_html/autodiscover">
+    AllowOverride None
+    Options -Indexes
+    Deny from all
+</Directory>
+
