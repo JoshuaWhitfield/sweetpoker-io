@@ -6,14 +6,16 @@ import ProfilePicture from '../../ProfilePicture';
 import XYSpacing from "../../Styling/XYSpacing";
 import AccountInfo from "./AccountInfo";
 import BestHand from "./BestHand";
-import account from "../../../utils/classes/account";
 
 const Dashboard = () => {
+
+    const username = <p>{store.getState().account.username}</p>;
+    const balance = <p>${sepNumByComma(store.getState().balance.value)}</p>;
 
     return (
         <div className='flex jcc aic fdc'>
             <Link className={classes.link} to='/profile' target='blank_'  style={styles.link}>
-                <AccountInfo pfp={<ProfilePicture/>} username={<p>{account.username.value}</p>} balance={<p>${sepNumByComma(account.balance.value)}</p>} />
+                <AccountInfo pfp={<ProfilePicture/>} username={username} balance={balance} />
             </Link>
                 <XYSpacing height='10px'/>
             <Link className={classes.link} to='/mastery' target='blank_'  style={styles.link}>

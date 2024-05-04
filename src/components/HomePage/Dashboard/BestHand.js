@@ -12,20 +12,14 @@ const BestHand = (props) => {
                     <p><strong>Best Hands:</strong></p>
                 </Col>
 
-                {
-                    conditionalRender(
-                        (store.getState().account.logged_in),
-                        <p>logged in!</p>,
-                        <>
-                            <Col className='col-9 atc fuzzy'>
-                                <p><strong>....</strong></p>
-                            </Col>
-                            <Col className='col-9 atc fuzzy'>
-                                <p><strong>....</strong></p>
-                            </Col>
-                        </>
-                    )
-                }
+                <>
+                    <Col className='col-9 atc fuzzy'>
+                        <p><strong>....</strong></p>
+                    </Col>
+                    <Col className='col-9 atc fuzzy'>
+                        <p><strong>....</strong></p>
+                    </Col>
+                </>
             </div>
         </>
     );

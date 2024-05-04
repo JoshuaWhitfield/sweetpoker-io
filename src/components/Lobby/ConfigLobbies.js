@@ -1,4 +1,4 @@
-import { Form, FormGroup, Label, Input, Button, Row } from 'reactstrap';
+import { Form, Row } from 'reactstrap';
 import XYSpacing from '../Styling/XYSpacing';
 import CLOption from './CLOption';
 import { Col } from "reactstrap";
@@ -23,7 +23,7 @@ const ConfigLobbies = () => {
     const [ isOpen, setOpen ] = useState(false);
 
     const configData = [
-        ['mode', ['holdem', 'omaha'], [mode.value, setMode]],
+        ['mode', ['holdem'], [mode.value, setMode]],
         ['limit', ['no limit', 'pot limit', 'fixed limit', 'mixed limit'], [limit.value, setLimit]],
         ['stakes', ['low', 'med', 'high', 'max', 'insane'], [stakes.value, setStakes]],
     ];

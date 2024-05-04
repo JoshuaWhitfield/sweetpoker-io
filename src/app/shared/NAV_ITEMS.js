@@ -1,24 +1,6 @@
-import { store } from "../../store";
-import { resetState, updateState } from "../../actions/stateActions";
+import { navLoginName } from "../../App";
 
 export const NAV_ITEMS = () => {
-
-    // store.dispatch(setUniKey(''));
-    // store.dispatch(setUsername(''));
-    // store.dispatch(setBalance(''));
-    // store.dispatch(setLoggedIn(false));
-    
-    let name = 'login'; let target = '_self';
-    let path = () => {
-        store.dispatch(resetState());
-        store.dispatch(updateState());
-        return '/login'
-    }
-
-    if (store.getState().account.logged_in) {
-        name = 'logout';
-        path = () => '/login';
-    }
 
     return [
         {
@@ -40,9 +22,9 @@ export const NAV_ITEMS = () => {
         },
         
         {
-            name: name,
-            path: path(),
-            target: target
+            name: navLoginName.value,
+            path: '/login',
+            target: '_self',
         },
     ];
 }

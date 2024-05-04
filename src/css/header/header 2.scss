@@ -1,0 +1,19 @@
+$background: rgb(17, 0, 36);
+$primary-elem: rgba(97, 14, 205, 0.885);
+$primary-text: rgb(158, 94, 241);
+$secondary-text: rgb(255, 255, 255);
+$primary-card: rgb(82, 81, 83);
+
+/* nav */
+
+.nav-text {
+    font-size: 30px;
+    color: $primary-text;
+}
+
+.nav-text:hover, .nav-text:active {
+    text-shadow: 
+        -5px 5px 15px $primary-elem,
+        5px -5px 15px $primary-elem;
+    filter: brightness(1.2);
+}

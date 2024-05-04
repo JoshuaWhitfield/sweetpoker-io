@@ -1,9 +1,11 @@
 import Login from "../../components/Login/Login";
-
+import { AccountContextProvider } from "../../slices/Context/contextSlice";
 const LoginPage = () => {
 
     return (
-        <Login />
+        <AccountContextProvider children={
+            <Login />
+        }/>
     );
 }
 

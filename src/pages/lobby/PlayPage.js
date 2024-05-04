@@ -1,5 +1,6 @@
 import Table from '../../components/Table/Table';
 import PlayConsole from '../../components/PlayConsole/PlayConsole';
+import { createDeck } from '../../poker-engine/classes/deck';
 
 const PlayPage = () => {
     const width = '990px';

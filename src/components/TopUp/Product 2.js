@@ -3,21 +3,21 @@ import { Link } from "react-router-dom";
 import VerticalSpacing from "../Styling/VerticalSpacing.js";
 
 const Product = (props) => {
-    let { name, price, value, vip, special, popular, discount, prodId } = props;
+    let { name, price, value, vip, special, popular, discount, prod_id } = props;
 
     const Paddle = window.Paddle;
     console.log(Paddle);
     const handleTrigger = (e) => {
         e.preventDefault();
         Paddle.Checkout.open({
-            product: prodId,
-            /* email: email, * store.getState().account.email */
+            product: prod_id,
+            //email: email, /* store.getState().account.email */
             successCallback: (data, err) => {
                 console.log('data: '+data);
                 if (err) console.log('error: '+err)
             }
-        });
-    };
+        })
+    }
 
     return (
         <Col className='col-4 mx-auto flex jcc aic'>

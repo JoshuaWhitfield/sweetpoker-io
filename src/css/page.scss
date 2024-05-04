@@ -36,6 +36,13 @@ $gradient2: linear-gradient(90deg, rgb(158, 94, 241), rgb(88, 8, 192));
     background-color: $primary-text;
 }
 
+.pfp2 {
+    width: 85px;
+    height: 85px;
+    border-radius: 50%;
+    margin: 20px;
+}
+
 .paginator {
     border: solid 1px $primary-text;
     border-top: none;

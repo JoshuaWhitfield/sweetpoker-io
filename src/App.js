@@ -1,15 +1,15 @@
 /* Utilities */
 
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Routes, Route } from 'react-router-dom';
 import { Provider } from "react-redux";
 
-/* components */
+/* Components */
 
 import Header from './components/Header/Header.js'
 import { store } from './store.js';
 
-/* pages */
+/* Pages */
 
 import HomePage from './pages/HomePage.js';
 import LobbyPage from './pages/lobby/LobbyPage.js';
@@ -19,7 +19,13 @@ import ForgotPasswordPage from "./pages/Login/ForgotPasswordPage.js";
 import SignUpPage from "./pages/Login/SignUpPage.js";
 import TopUpPage from "./pages/TopUpPage.js";
 import ForumPage from "./pages/Forum/ForumPage.js";
+import ProfilePage from "./pages/Profile/ProfilePage.js";
 
+/* Global Signals */
+
+import { signal } from "@preact/signals-react";
+export const navLoginName = signal('login');
+export const setNavLoginName = (name = 'login') => navLoginName.value = name;
 
 function App() {
   
@@ -29,14 +35,15 @@ function App() {
       <Header />
       <div className='custom-body flex jcc aic'>
         <Routes>
-          <Route path='/' element={<HomePage/>}></Route>
-          <Route path='/lobby' element={<LobbyPage/>}></Route>
-          <Route path='/lobby/play' element={<PlayPage/>}></Route>
-          <Route path='/login' element={<LoginPage/>}></Route>
-          <Route path='/account-recovery' element={<ForgotPasswordPage />}></Route>
-          <Route path='/signup' element={<SignUpPage />}></Route>
-          <Route path='/chip-store' element={<TopUpPage />}></Route>
-          <Route path='/social' element={<ForumPage />}></Route>
+          <Route path='/' element={<HomePage/>} />
+          <Route path='/lobby' element={<LobbyPage/>} />
+          <Route path='/lobby/play' element={<PlayPage/>} />
+          <Route path='/login' element={<LoginPage/>} />
+          <Route path='/account-recovery' element={<ForgotPasswordPage />} />
+          <Route path='/signup' element={<SignUpPage />} />
+          <Route path='/chip-store' element={<TopUpPage />} />
+          <Route path='/social' element={<ForumPage />} />
+          <Route path='/profile' element={<ProfilePage />} />
         </Routes>
       </div>
     </Provider>

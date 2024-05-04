@@ -5,5 +5,5 @@ export const getAllCards = () => {
 }
 
 export const getCard = (suit, value) => {
-    return getAllCards()[`${value}_${suit}`]
+    return getAllCards()[`${value}_${suit}`]// return getAllCards()[`${suit}_${value}`]
 }

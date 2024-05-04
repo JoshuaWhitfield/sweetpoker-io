@@ -104,7 +104,7 @@ const AddTableModal = (props) => {
 
 
     const configData = [
-        ['mode', ['holdem', 'omaha'], [mode, (newValue) => {setMode(newValue)}]],
+        ['mode', ['holdem'], [mode, (newValue) => {setMode(newValue)}]],
         ['limit', ['no limit', 'fixed limit', 'pot limit', 'mixed limit'], [limit, (newValue) => {setLimit(newValue)}]],
         ['stakes',
             [
