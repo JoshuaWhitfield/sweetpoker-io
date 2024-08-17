@@ -50,6 +50,7 @@ body {
 /* buttons */
 
 .button {
+    all: unset;
     background-image: $gradient;
     border-radius: 50px 50px 50px 50px;
 }

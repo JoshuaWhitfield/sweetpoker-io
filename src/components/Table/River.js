@@ -5,7 +5,7 @@ const River = (props) => {
     let { riverArr } = props;
     if (riverArr.length > 5) riverArr = riverArr.slice(0,5)
     return (
-        <Row>
+        <Row style={styles.river}>
             {
                 riverArr.map(
                     (card, idx) => {
@@ -21,6 +21,13 @@ const River = (props) => {
             }
         </Row>
     );
+}
+
+const styles = {
+    river: {
+        position: 'absolute',
+        zIndex: 1,
+    }
 }
 
 export default River

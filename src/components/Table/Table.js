@@ -2,6 +2,7 @@ import PokerTableImage from '../../app/assets/play-room/poker-table.png'
 import { generateHoleCards, generateRiver } from '../../slices/Engine/engineSlice';
 import { pokerEngine } from '../../poker-engine/classes/engine';
 import River from './River';
+import UserProfileHud from './UserProfileHud';
 
 
 /* 
@@ -33,13 +34,72 @@ const Table = (props) => {
     // console.log(pokerEngine.getWinner(holeCardsArr, riverArr))
     // console.log(pokerEngine.readableWinner(pokerEngine.getWinner(holeCardsArr, riverArr)))
     // console.log('\n\n')
+    const players = [
+        {
+            "username": "goodBoy747",
+            "chips": 10000,
+            "status": "folded",
+            "profilePicture": "pfp",
+        },
+
+        {
+            "username": "ladyDamascus",
+            "chips": 10000,
+            "status": "folded",
+            "profilePicture": "pfp",
+        },
+
+        {
+            "username": "DomeSlayer",
+            "chips": 10000,
+            "status": "folded",
+            "profilePicture": "pfp",
+        },
+
+        {
+            "username": "cringeCoreGod",
+            "chips": 10000,
+            "status": "folded",
+            "profilePicture": "pfp",
+        },
+        {
+            "username": "goodBoy747",
+            "chips": 10000,
+            "status": "folded",
+            "profilePicture": "pfp",
+        },
+
+        {
+            "username": "ladyDamascus",
+            "chips": 10000,
+            "status": "folded",
+            "profilePicture": "pfp",
+        },
+
+        {
+            "username": "DomeSlayer",
+            "chips": 10000,
+            "status": "folded",
+            "profilePicture": "pfp",
+        },
+
+        {
+            "username": "cringeCoreGod",
+            "chips": 10000,
+            "status": "folded",
+            "profilePicture": "pfp",
+        },
+    ];
+
     return (
         <>
-            <div className='center-content' style={{width: width, height: height, backgroundImage: `url(${PokerTableImage})`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover'}}>
+            <div className='center-content' style={{width: width, height: height, backgroundImage: `url(${PokerTableImage})`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover', position: 'relative'}}>
                 <River riverArr={riverArr}/>
+                <UserProfileHud players={players} />
             </div>
         </>
     );
 }
+
 
 export default Table
