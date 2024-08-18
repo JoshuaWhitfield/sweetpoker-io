@@ -40,7 +40,7 @@ const style = {
         2: {
             position: 'absolute',
             zIndex: '2',
-            margin: '450px 650px 0px 0px',
+            margin: '440px 650px 0px 0px',
         },
         3: {
             position: 'absolute',
@@ -50,7 +50,7 @@ const style = {
         4: {
             position: 'absolute',
             zIndex: '2',
-            margin: '450px 0px 0px 650px',
+            margin: '440px 0px 0px 650px',
         },
         5: {
             position: 'absolute',
@@ -60,7 +60,7 @@ const style = {
         6: {
             position: 'absolute',
             zIndex: '2',
-            margin: '0px 0px 450px 650px',
+            margin: '0px 0px 430px 650px',
         },
         7: {
             position: 'absolute',

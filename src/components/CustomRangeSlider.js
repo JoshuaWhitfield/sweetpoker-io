@@ -1,14 +1,16 @@
+import { useState } from "react";
 import { Col, Row } from "reactstrap";
 
 const CustomRangeSlider = (props) => {
-    let { min, max, step, sliderValue, setSliderValue, onChange } = props;
+    let { min, max, step, onChange, sliderValue, setSliderValue } = props;
+    if (!max) max = 100;
     if (!min) min = 0;
-    if (!step) step = 5;
+    if (!step) step = (max * Math.floor(1/50));
     
     const handleInputChange = (e) => {
         if (e.target.value > max) e.target.value = max;
         setSliderValue(e.target.value);
-        onChange();
+        if (typeof(onChange) == 'function') { onchange() }
     }
     
     //if (!max) return null;

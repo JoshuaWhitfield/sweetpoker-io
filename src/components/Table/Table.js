@@ -89,6 +89,14 @@ const Table = (props) => {
             "status": "folded",
             "profilePicture": "pfp",
         },
+        // undefined,
+        // undefined,
+        // undefined,
+        // undefined,
+        // undefined,
+        // undefined,
+        // undefined,
+        // undefined,
     ];
 
     return (
