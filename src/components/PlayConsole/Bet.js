@@ -11,17 +11,26 @@ const Bet = (props) => {
     }
 
     return (
-        <Row>
-            <Col>
+        <div className="flex fdr jcc aic" style={styles.contents}>
+            
                 <Button className="button" onClick={handleBet}>
-                    <p>&nbsp;Bet&nbsp;</p>
+                    <p style={styles.p}>&nbsp;&nbsp;&nbsp;Bet&nbsp;&nbsp;&nbsp;</p>
                 </Button>
-            </Col>
-            <Col>
+           
+           
                 <CustomRangeSlider min={min} max={max} sliderValue={sliderValue} setSliderValue={setSliderValue} />
-            </Col>
-        </Row>
+         
+        </div>
     )
+}
+
+const styles = {
+    p: {
+        margin: '-2px 0px 0px 0px'
+    },
+    contents: {
+        margin: '-20px 0px 0px 0px'
+    }
 }
 
 export default Bet;

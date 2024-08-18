@@ -7,11 +7,17 @@ const Fold = () => {
 
     return (
         <Button className="button" onClick={handleFold}>
-            <p>
-                &nbsp;Fold&nbsp;
+            <p style={styles.p}>
+                &nbsp;&nbsp;Fold&nbsp;&nbsp;
             </p>
         </Button>
     )
+}
+
+const styles = {
+    p: {
+        margin: '-2px 0px 0px 0px'
+    }
 }
 
 export default Fold;
