@@ -1,5 +1,5 @@
-import { setLimit, setMode, setStakes } from "../actions/lobbyActions";
-import { potIncrease, potReset, potIncrementSplit, roundIterate, playerIterate, roundReset, playerReset, playerCheck, playerFold, playerBet, playerRaise, playerCall, playerAllIn, increaseChips, decreaseChips, setChips, increaseBalance, decreaseBalance, setBalance, addPlayerAction, resetPlayerAction, playerIsActive, setUsername, setDecal, setLoggedIn, updateState, resetState, allowRebuy, setRebuyAmount, setRebuyThreshold, toggleRebuyToPerc, toggleRebuyToZero, resetPlayerState, setPlayerActive, setPlayerBankrupt, setPlayerAllIn, setPlayerFolded, setPlayerWaiting, setPlayerJoining } from "../slices/Reducer/reducerSlice";
+//import { setLimit, setMode, setPlayers, setStakes, setTableName } from "../actions/roomActions";
+import { setLimit, setMode, setPlayers, setStakes, setTableName, potIncrease, potReset, potIncrementSplit, roundIterate, playerIterate, roundReset, playerReset, playerCheck, playerFold, playerBet, playerRaise, playerCall, playerAllIn, increaseChips, decreaseChips, setChips, increaseBalance, decreaseBalance, setBalance, addPlayerAction, resetPlayerAction, playerIsActive, setUsername, setDecal, setLoggedIn, updateState, resetState, allowRebuy, setRebuyAmount, setRebuyThreshold, toggleRebuyToPerc, toggleRebuyToZero, resetPlayerState, setPlayerActive, setPlayerBankrupt, setPlayerAllIn, setPlayerFolded, setPlayerWaiting, setPlayerJoining } from "../slices/Reducer/reducerSlice";
 import { Officialstate } from "../state";
 
 let initialState = Officialstate;
@@ -132,6 +132,12 @@ export const reducer = (state = initialState, action) => {
         case '@set_stakes':
             return setStakes(state, action.payload);
             
+        case '@set_players':
+            return setPlayers(state, action.payload);
+
+        case '@set_table_name':
+            return setTableName(state, action.payload)
+
         default: return state;
     }
 }

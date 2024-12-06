@@ -1,9 +1,16 @@
 import PokerTableImage from '../../app/assets/play-room/poker-table.png'
-import { generateHoleCards, generateRiver } from '../../slices/Engine/engineSlice';
+//import { generateHoleCards, generateRiver } from '../../slices/Engine/engineSlice';
 import { pokerEngine } from '../../poker-engine/classes/engine';
 import River from './River';
 import UserProfileHud from './UserProfileHud';
+//import { finalPlayers, formatPlayer, setPlayers } from '../../slices/Player/playerSlice';
+import { sepNumByComma } from '../../utils/formatNumbers';
+//import { useSelector } from 'react-redux';
+import { createGame } from '../../models/pokerGame';
+import io from 'socket.io-client';
+import { useEffect, useState } from 'react';
 
+const socket = io('http://localhost:4000');
 
 /* 
 
@@ -21,89 +28,74 @@ complex solutions:
 
 const Table = (props) => {
     const { width, height } = props;
-    const riverArr = generateRiver()
-    //console.log(riverArr)
-    const holeCardsArr = pokerEngine.generateHoleCards(3)
-    // console.log('Hole Cards: ')
-    // console.log(pokerEngine.readableHole(holeCardsArr))
-    // console.log('\n\n')
-    // console.log('River: ')
-    // console.log(pokerEngine.readableRiver(riverArr))
-    // console.log('\n\n')
-    // console.log('Winner Data')
-    // console.log(pokerEngine.getWinner(holeCardsArr, riverArr))
-    // console.log(pokerEngine.readableWinner(pokerEngine.getWinner(holeCardsArr, riverArr)))
-    // console.log('\n\n')
-    const players = [
-        {
-            "username": "goodBoy747",
-            "chips": 10000,
-            "status": "folded",
-            "profilePicture": "pfp",
-        },
 
-        {
-            "username": "ladyDamascus",
-            "chips": 10000,
-            "status": "folded",
-            "profilePicture": "pfp",
-        },
+  const [players, setPlayers] = useState([]);
+  const [communityCards, setCommunityCards] = useState([]);
+  const [pot, setPot] = useState(0);
 
-        {
-            "username": "DomeSlayer",
-            "chips": 10000,
-            "status": "folded",
-            "profilePicture": "pfp",
-        },
+  useEffect(() => {
+    // Listen for updates on players joining
+    socket.on('updatePlayers', (playersData) => {
+      setPlayers(playersData);
+    });
 
-        {
-            "username": "cringeCoreGod",
-            "chips": 10000,
-            "status": "folded",
-            "profilePicture": "pfp",
-        },
-        {
-            "username": "goodBoy747",
-            "chips": 10000,
-            "status": "folded",
-            "profilePicture": "pfp",
-        },
+    // Listen for new hands starting
+    socket.on('newHand', (communityCardsData) => {
+      setCommunityCards(communityCardsData);
+    });
 
-        {
-            "username": "ladyDamascus",
-            "chips": 10000,
-            "status": "folded",
-            "profilePicture": "pfp",
-        },
+    // Listen for chip updates
+    socket.on('updateChips', (chipData) => {
+      setPlayers((prevPlayers) =>
+        prevPlayers.map((player) =>
+          player.id === chipData.playerId
+            ? { ...player, chips: chipData.chips }
+            : player
+        )
+      );
+    });
 
-        {
-            "username": "DomeSlayer",
-            "chips": 10000,
-            "status": "folded",
-            "profilePicture": "pfp",
-        },
+    // Listen for community card updates (Flop, Turn, River)
+    socket.on('startFlop', (flopCards) => {
+      setCommunityCards(flopCards);
+    });
 
-        {
-            "username": "cringeCoreGod",
-            "chips": 10000,
-            "status": "folded",
-            "profilePicture": "pfp",
-        },
-        // undefined,
-        // undefined,
-        // undefined,
-        // undefined,
-        // undefined,
-        // undefined,
-        // undefined,
-        // undefined,
-    ];
+    socket.on('startTurn', (turnCard) => {
+      setCommunityCards((prevCards) => [...prevCards, turnCard]);
+    });
+
+    socket.on('startRiver', (riverCard) => {
+      setCommunityCards((prevCards) => [...prevCards, riverCard]);
+    });
+
+    // Cleanup on component unmount
+    return () => {
+      socket.off('updatePlayers');
+      socket.off('newHand');
+      socket.off('updateChips');
+      socket.off('startFlop');
+      socket.off('startTurn');
+      socket.off('startRiver');
+    };
+  }, []);
+   
+    
+    const game = createGame();
+
+    while (players.length < 8) {
+        players.push(undefined)
+    }
 
     return (
         <>
             <div className='center-content' style={{width: width, height: height, backgroundImage: `url(${PokerTableImage})`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover', position: 'relative'}}>
-                <River riverArr={riverArr}/>
-                <UserProfileHud players={players} />
+                <River riverArr={communityCards}/>
+                <div>
+                    <p>
+                        pot: {sepNumByComma(pot)}
+                    </p>
+                </div>
+                <UserProfileHud players={players} setPlayers={setPlayers} />
             </div>
         </>
     );

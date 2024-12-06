@@ -75,12 +75,13 @@ const Signup = (props) => {
     /* signup process using php rest api */
     console.log(formData);
 
-    const currentDate = new Date();
+    const currentDate = () => new Date();
     const signupData = {
       'email': formData.email.toLowerCase(),
       'username': formData.username,
-      'md5': md5(formData.password),
-      'timestamp': currentDate.toISOString().slice(0, 19).replace('T', ' '),
+      'password': md5(formData.password),
+      'createdAt': currentDate().toISOString().slice(0, 19).replace('T', ' '),
+      'updatedAt': currentDate().toISOString().slice(0, 19).replace('T', ' '),
     };
 
     checkUser(

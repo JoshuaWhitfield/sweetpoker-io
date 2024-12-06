@@ -6,7 +6,7 @@ const PlayingCard = (props) => {
     let width = '83px'; let height = '120px'
     //<div style={{width: width, height: height, backgroundImage: `url(${getCard(suit, value)})`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover'}}></div>
     return (
-        <Col className='mx-auto'>
+        <Col className='mx-auto playing-card'>
             <img tabIndex={0} src={require(`../../app/assets/playing-cards/${value}_of_${suit}.png`)} alt={`card ${value} of ${suit}`} style={{width: width, height: height}}/>
         </Col>
     );

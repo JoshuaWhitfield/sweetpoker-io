@@ -8,14 +8,14 @@ import formatPlayerNames from "../../utils/formatPlayerNames";
 import { getBigBlind, getSmallBlind } from "../../utils/formatNumbers";
 
 const Lobby = (props) => {
-    let { sections, playerNames, config, avgPot } = props
+    let { name, sections, playerNames, config, avgPot } = props
     const [ isOpen, setOpen ] = useState(false);
 
     const LobbyInterface = (props) => {
         let { status } = props;
 
         const handleSubmit = () => {
-            store.dispatch(setPlayers(formatPlayerNames(playerNames, true)));
+            store.dispatch(setPlayers(formatPlayerNames(playerNames)));
             store.dispatch(setMode(sections[1]));
             store.dispatch(setLimit(sections[2]));
             store.dispatch(setStakes({

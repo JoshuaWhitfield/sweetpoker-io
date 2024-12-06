@@ -2,6 +2,7 @@ const set_mode = '@set_mode';
 const set_limit = '@set_limit';
 const set_stakes = '@set_stakes';
 const set_players = '@set_players';
+const set_table_name = '@set_table_name';
 
 export const setMode = (mode = '') => {
     return {
@@ -28,5 +29,12 @@ export const setPlayers = (players = []) => {
     return {
         type: set_players,
         payload: players,
+    }
+}
+
+export const setTableName = (name = '') => {
+    return {
+        type: set_table_name,
+        payload: name
     }
 }

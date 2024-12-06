@@ -3,20 +3,20 @@ import UserProfile from "./UserProfile";
 import EmptySeat from "./EmptySeat";
 
 const UserProfileHud = (props) => {
-    const { players } = props;
+    const { players, setPlayers } = props;
 
     return players.map( (player, idx) => {
         
         if (typeof(player) == 'undefined') {
            return (
             <div style={style.position[idx]}>
-                <EmptySeat />
+                <EmptySeat players={players} setPlayers={setPlayers} />
             </div>
            )
         } else {
             return (
                 <div style={style.position[idx]}>
-                    <UserProfile player={player} />
+                    <UserProfile playerID={player.id} username={player.username} status={player.status}/>
                 </div>
             )
         }

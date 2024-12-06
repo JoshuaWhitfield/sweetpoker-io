@@ -96,7 +96,7 @@ const ListLobbies = () => {
             window(firstIdx, lastIdx).map((lobby, idx) => (
             <Col className='mt-3 flex jcc' key={idx}>
                 <div className='styled-link flex jcc' onClick={handleClick} style={{ width: '100%' }}>
-                  <Lobby sections={lobby.sections} playerNames={formatPlayerNames(lobby.playerNames)} avgPot={lobby.avgPot} />
+                  <Lobby name={lobby.sections[0]} sections={lobby.sections} playerNames={formatPlayerNames(lobby.playerNames)} avgPot={lobby.avgPot} />
                 </div>
             </Col>
             ))

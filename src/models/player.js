@@ -36,14 +36,14 @@ class Player {
     getName = () => this.name.value;
 
     pfp = signal(profilePictureFunctions(this.pfp));
-    getPFP = () => this.pfp;
+    getPFP = () => this.pfp.value;
 
     chips = signal(chipFunctions(this.chips));
     withChips = () => this.chips.value;
 
-    holeSet = signal(holeSetFunctions);
-    withHoleSet = () => this.holeSet.value;
-    resetHoleSet = () => { this.holeSet = signal(holeSetFunctions) };
+    holeCards = signal(holeSetFunctions);
+    withHoleCards = () => this.holeCards.value;
+    resetHoleCards = () => { this.holeCards = signal(holeCardsFunctions) };
 
 }
 

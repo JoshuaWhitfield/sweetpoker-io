@@ -9,13 +9,14 @@ export const checkUser = (incomingData, success = (res) => res, failure = (err) 
 }
 
 export const addUser = (incomingData, success = (res) => res, failure = (err) => err) => {
-    const endpoint = `https://sweetpoker.io/sweet-poker-api/src/api/signup.php?&email=${incomingData.email.toLowerCase()}&username=${incomingData.username}&md5=${incomingData.md5}&timestamp=${incomingData.timestamp}`;
+    const endpoint = `https://localhost:3306/SweetPokerAPI/api/signup.php?&email=${incomingData.email.toLowerCase()}&username=${incomingData.username}&password=${incomingData.md5}&createdAt=${incomingData.timestamp}&updatedAt=${incomingData.timestamp}`;
+    //const endpoint = `https://sweetpoker.io/sweet-poker-api/src/api/signup.php?&email=${incomingData.email.toLowerCase()}&username=${incomingData.username}&password=${incomingData.md5}&createdAt=${incomingData.timestamp}&updatedAt=${incomingData.timestamp}`;
     axios.get(endpoint, incomingData)
     .then(success)
     .catch(failure)
 }
 
-/* endpoints: table.php, add_table.php */
+/* endpoints: getAllTables.php, add_table.php */
 
 const formatTables = (tables) => {
     let result = [];
@@ -32,7 +33,7 @@ const formatTables = (tables) => {
 }
 
 const fetchTables = () => {
-    const endpoint = 'https://sweetpoker.io/sweet-poker-api/src/api/table.php';
+    const endpoint = 'https://sweetpoker.io/sweet-poker-api/src/api/getAllTables.php';
 
     return axios.get(endpoint)
         .then((response) => {
@@ -53,6 +54,13 @@ export async function getAllTables() {
 
 export const addTable = (incomingData, success = (res) => res, failure = (err) => err) => {
     const endpoint = `https://sweetpoker.io/sweet-poker-api/src/api/add_table.php?room=${incomingData.room}&player_names=${incomingData.player_names}&variant=${incomingData.variant}&stakes=${incomingData.stakes}&pot_limit=${incomingData.pot_limit}&avg_pot=${incomingData.avg_pot}`;
+    axios.get(endpoint, incomingData)
+    .then(success)
+    .catch(failure)
+}
+
+export const getTable = (incomingData, success = (res) => res, failure = (err) => err) => {
+    const endpoint = `https://sweetpoker.io/sweet-poker-api/src/api/get_table.php?table_name=${incomingData.table_name}`;
     axios.get(endpoint, incomingData)
     .then(success)
     .catch(failure)

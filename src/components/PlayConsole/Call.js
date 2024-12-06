@@ -7,11 +7,17 @@ const Call = () => {
 
     return (
         <Button className="button" onClick={handleCall}>
-            <p>
-                &nbsp;Call&nbsp;
+            <p style={styles.p}>
+                &nbsp;&nbsp;Call&nbsp;&nbsp;
             </p>
         </Button>
     )
+}
+
+const styles = {
+    p: {
+        margin: '2px 5px 5px 5px'
+    }
 }
 
 export default Call;

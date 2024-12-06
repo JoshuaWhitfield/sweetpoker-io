@@ -2,47 +2,48 @@ import { useState } from "react";
 import { Col, Row } from "reactstrap";
 
 const CustomRangeSlider = (props) => {
-    let { min, max, step, onChange, sliderValue, setSliderValue } = props;
-    if (!max) max = 100;
-    if (!min) min = 0;
-    if (!step) step = (max * Math.floor(1/50));
+    let { min = 0, max = 100, step = Math.floor(max / 50), onChange, sliderValue = 0, setSliderValue } = props;
     
     const handleInputChange = (e) => {
         if (e.target.value > max) e.target.value = max;
         setSliderValue(e.target.value);
-        if (typeof(onChange) == 'function') { onchange() }
+        if (typeof onChange === 'function') {
+            onChange(e.target.value);  // Corrected case sensitivity
+        }
     }
-    
-    //if (!max) return null;
+
     return (
-        <>
-            <div className='flex jcc aic' style={styles.sliderParent}>
-                <Row>
-                    <Col className='flex jcc mx-auto' style={styles.col}>
+        <div className='flex jcc aic' style={styles.sliderParent}>
+            <Row>
+                <Col className='flex jcc mx-auto' style={styles.col}>
+                    <input 
+                        className='special-input flex atc'
+                        type='number'
+                        placeholder={sliderValue}
+                        value={sliderValue}
+                        onChange={handleInputChange}
+                        style={styles.displayValue}
+                    />
+                    <div className='slider flex jcc'>
                         <input 
-                            className='special-input flex atc'
-                            type='number'
-                            placeholder={sliderValue}
+                            type='range'
+                            min={min.toString()} 
+                            max={max.toString()} 
+                            step={step.toString()}
                             value={sliderValue}
-                            onChange={handleInputChange}
-                            style={styles.displayValue}
+                            onChange={(e) => {
+                                setSliderValue(e.target.value);
+                                if (typeof onChange === 'function') {
+                                    onChange(e.target.value);  // Ensure the correct value is passed
+                                }
+                            }}
+                            className='range'
+                            style={styles.slider}
                         />
-                        <div className='slider flex jcc'>
-                            <input 
-                                type='range'
-                                min={min.toString()} 
-                                max={max.toString()} 
-                                step={step.toString()}
-                                value={sliderValue}
-                                onChange={(e) => {setSliderValue(e.target.value); onChange()}}
-                                className='range'
-                                style={styles.slider}
-                            />
-                        </div>
-                    </Col>
-                </Row>
-            </div>
-        </>
+                    </div>
+                </Col>
+            </Row>
+        </div>
     );
 }
 
@@ -63,4 +64,4 @@ const styles = {
     }
 }
 
-export default CustomRangeSlider
+export default CustomRangeSlider;

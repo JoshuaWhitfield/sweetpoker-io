@@ -60,3 +60,43 @@ $gradient2: linear-gradient(90deg, rgb(158, 94, 241), rgb(88, 8, 192));
 .page-ref:hover {
     cursor: pointer;
 }
+
+// Timer animation
+.timer {
+    width: 100px;
+    height: 10px;
+    border-radius: 50px;
+    color: $gradient;
+    animation: countdown 15s linear infinite;
+  }
+  
+  @keyframes countdown {
+    from {
+      width: 100%;
+    }
+    to {
+      width: 0;
+    }
+  }
+  
+  // Card reveal animations
+  .community-cards {
+    display: flex;
+    justify-content: space-around;
+  
+    .playing-card {
+      animation: card-reveal 0.5s ease-in;
+    }
+  }
+  
+  @keyframes card-reveal {
+    from {
+      transform: rotateY(90deg);
+      opacity: 0;
+    }
+    to {
+      transform: rotateY(0deg);
+      opacity: 1;
+    }
+  }
+  

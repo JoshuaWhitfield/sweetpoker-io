@@ -61,6 +61,7 @@ const playerNamesFunctions = {
             formattedArr.push([name])
             if (withChipCount) { formattedArr[-1].push(chips) }
         }
+        return formattedArr;
     },
     addPlayer: (username, chips) => {
         this.str += `${username}(${chips}) `

@@ -56,6 +56,7 @@ export const Officialstate = {
                 big_blind: 0
             },
             players: [],
+            tableName: '',
         },
     }
 }

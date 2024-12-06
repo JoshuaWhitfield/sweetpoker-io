@@ -16,7 +16,7 @@ const Fold = () => {
 
 const styles = {
     p: {
-        margin: '-2px 0px 0px 0px'
+        margin: '2px 5px 5px 5px'
     }
 }
 
