@@ -1,4 +1,4 @@
-import { controller } from "./controller"; 
+import { controller } from "./controller.js"; 
 
 class PokerEngine {
 
@@ -67,4 +67,6 @@ class PokerEngine {
 
 };
 
-export const pokerEngine = new PokerEngine();
+export const createEngine = () => {
+    return new PokerEngine();
+}

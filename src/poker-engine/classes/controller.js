@@ -1,5 +1,5 @@
-import { createDeck } from './deck';
-import { handRanking } from './handRanking';
+import { createDeck } from './deck.js';
+import { handRanking } from './handRanking.js';
 
 class ControllerUtil {
 
