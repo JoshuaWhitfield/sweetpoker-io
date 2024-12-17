@@ -12,6 +12,7 @@ import { store } from '../../store';
 import XYSpacing from '../Styling/XYSpacing.js';
 
 import md5 from 'md5';
+import axios from 'axios';
 
 
 const Signup = (props) => {
@@ -49,76 +50,49 @@ const Signup = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    /* input format error handling: */
-
-    /* check valid email */
+    // Input format error handling:
     const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
     if (!emailRegex.test(formData.email)) {
-      setErrors({ ...errors, validEmail: true });
-      return;
+        setErrors({ ...errors, validEmail: true });
+        return;
     }
 
-    /* check username length */
     if (formData.username.length > 15 || formData.username.length < 3) {
-      setErrors({ ...errors, validUsername: true });
-      return;
+        setErrors({ ...errors, validUsername: true });
+        return;
     }
 
-    /* add a username check for spaces */
-
-    /* check password length */
     if (formData.password.length < 6 || formData.password.length > 15) {
-      setErrors({ ...errors, passwordLength: true });
-      return;
+        setErrors({ ...errors, passwordLength: true });
+        return;
     }
-    
-    /* signup process using php rest api */
-    console.log(formData);
 
-    const currentDate = () => new Date();
+    // Prepare data for signup
     const signupData = {
-      'email': formData.email.toLowerCase(),
-      'username': formData.username,
-      'password': md5(formData.password),
-      'createdAt': currentDate().toISOString().slice(0, 19).replace('T', ' '),
-      'updatedAt': currentDate().toISOString().slice(0, 19).replace('T', ' '),
+        email: formData.email.toLowerCase(),
+        username: formData.username,
+        password: formData.password,  // Send the plain password securely over HTTPS, backend will hash
     };
 
-    checkUser(
-      { 'email': formData.email.toLowerCase() }, 
-      (res) => {
-        const data = JSON.parse(res.data);
-        console.log('checkUser: '); console.log(data);
+    axios.post('http://localhost:3000/sign-up', signupData)
+    .then(response => {
+      // Assume the server returns the user data without password
+      console.log('Signup successful:', response.data);
+      const { username, balance } = response.data.user;
+      store.dispatch(setUsername(username));
+      store.dispatch(setBalance(balance));
+      store.dispatch(setLoggedIn(true));
+      navigate('/');
+      store.dispatch(updateState());
+    })
+    .catch(error => {
+      console.log('Signup failed:', error);
+      if (error.response && error.response.status === 400) {
+        setErrors({ ...errors, existingEmail: true });
+      }
+    });
+}
 
-        if (data !== null) {
-          setErrors({ ...errors, existingEmail: true });
-          return;
-        }
-
-        addUser(
-          signupData,
-          () => {
-            checkUser(
-              { 'email': formData.email.toLowerCase() },
-              (res) => {
-                const data = JSON.parse(res.data);
-                store.dispatch(setBalance(data.balance));
-                store.dispatch(setUsername(data.username));
-                store.dispatch(setLoggedIn(true));
-                return data;
-              }
-            )
-            navigate('/')
-            store.dispatch(updateState());
-          },
-          (err) => {
-            console.log(err);
-          }
-        )
-      },
-    )
-
-  }
 
   return (
     <div>

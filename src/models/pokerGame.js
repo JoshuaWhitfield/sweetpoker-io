@@ -1,5 +1,7 @@
 // poker-engine/Game.js
-import { pokerEngine } from "../poker-engine/classes/engine";
+import { createEngine } from "../poker-engine/classes/engine.js";
+
+const pokerEngine = createEngine()
 
 class Game {
     constructor() {

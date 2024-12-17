@@ -57,7 +57,7 @@ const Login = (props) => {
     }
     
     /* if no format errors, continue with login */
-    const endpoint = `https://sweetpoker.io/sweet-poker-api/src/api/login.php?email=${formData.email}`
+    const endpoint = `https://localhost:3000/login`
     const requestData = {'email': formData.email.toLowerCase()};
     axios.get(endpoint, requestData)
     .then(res => {
